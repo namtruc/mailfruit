@@ -7,15 +7,13 @@ import pandas as pd
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
-# me == my email address
-# you == recipient's email address
+from os import path as os_path
 
 me = 'kildek@caramail.fr'
-#you = 'vincentd@gmx.us'
+
 n = 0
 date = datetime.datetime.today().strftime('%d.%m.%y-%Hh%M')
-dossier_python = os.getcwd()
+dossier_python = os_path.abspath(os_path.split(__file__)[0])
 
 
 
@@ -64,7 +62,7 @@ while 1:
 #######################################################################################################
 ##### Operations fichier HTML
 
-dossier = '.'
+dossier = dossier_python
 
 while 1:
     reponse = input("Taper 1 pour choisir le fichier HTML dans le repertoire actuel (recommande)\nTaper 2 pour choisir un autre repertoire\n")
@@ -76,7 +74,7 @@ while 1:
     else:
         print ("Choix incorrect !")   
         
-items = os.listdir(dossier)############## tester avec windows
+items = os.listdir(dossier)
 newlist = []
 for names in items:
     if names.endswith(".html"):
@@ -86,7 +84,7 @@ contenu = input("Entrer le nom complet du fichier HTML contenant le texte brut d
 
 os.chdir(dossier)
 
-with open(contenu, 'r') as file_in :
+with open(contenu, 'r', encoding="utf8") as file_in :
   file_out = file_in.read()
 
 os.chdir(dossier_python)
@@ -104,9 +102,6 @@ while True :
 
 #######################################################################################################
 ##### Definir les variables
-
-dossier = '.'
-
 d = []
 
 nombre_variables = input("Entrer le nombre de variables (nom, lien, etc...)\n")
@@ -122,6 +117,8 @@ vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))
 #######################################################################################################
 ##### Determiner le fichier excel
 
+dossier = dossier_python
+
 while 1:
     reponse = input("Taper 1 pour choisir le fichier excel ou libreoffice dans le repertoire actuel (recommande)\nTaper 2 pour choisir un autre repertoire\n")
     if reponse=='1':
@@ -132,9 +129,9 @@ while 1:
     else:
         print ("Choix incorrect !")   
         
-items = os.listdir(dossier)############## tester avec windows
+items = os.listdir(dossier
 newlist2 = []
-for names in items: ###### tester les noms
+for names in items: 
     if names.endswith(".ods"):
         newlist2.append(names)
     elif names.endswith(".xlsx"):
@@ -147,7 +144,6 @@ contenu = input("Entrer le nom complet du fichier contenant la base de donnee\n"
 
 os.chdir(dossier) 
 
-#read_file = pd.read_excel(contenu)
 df = pd.DataFrame(pd.read_excel(contenu))
 	
 
@@ -186,7 +182,7 @@ for x in range (vligned, vlignef+1):
 
 	mail.sendmail(me, you, msg.as_string())         
 	with open("sortie.txt", "a") as myfile:
-		myfile.write(you+" Successfully sent email\n")
+		myfile.write(you+" Mail envoye\n")
 	n=n+1
 	#except mail.Exception:#######erreur
 		#print ("Error: unable to send email")
@@ -206,7 +202,6 @@ os.rename("sortie.txt", date+".txt" )
 #Piece jointe ?
 #Connection ?
 #Lien Hypertexte ?
-#essai wind
 
 
 ##### Convertir lettre en chiffre
