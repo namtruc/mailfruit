@@ -32,7 +32,7 @@ usr = 'vincentd@gmx.us'#########################################################
 #mail.login(usr, mdp)
 
 while True:
-     print("Connection réussie")
+     print("Connection reussie")
      break
           
 print("Le mail de l'expediteur est :")
@@ -67,7 +67,7 @@ while 1:
 dossier = '.'
 
 while 1:
-    reponse = input("Taper 1 pour choisir le fichier HTML dans le repertoire actuel (recommandé)\nTaper 2 pour choisir un autre répertoire\n")
+    reponse = input("Taper 1 pour choisir le fichier HTML dans le repertoire actuel (recommande)\nTaper 2 pour choisir un autre repertoire\n")
     if reponse=='1':
         break
     elif reponse =='2':
@@ -110,20 +110,20 @@ dossier = '.'
 d = []
 
 nombre_variables = input("Entrer le nombre de variables (nom, lien, etc...)\n")
-vmail = int(input("Indiquer le numéro de la colonne comportant les adreses mail\n"))-1
+vmail = int(input("Indiquer le numero de la colonne comportant les adreses mail\n"))-1
 
 for x in range(1, (int(nombre_variables)+1)):
-	d.append(int(input("Numéro de la colonne avec la variable "+str(x)+"\n"))-1)
+	d.append(int(input("Numero de la colonne avec la variable "+str(x)+"\n"))-1)
 	
-vligned = int(input("Numéro de la ligne de début de la liste des destinataires "))-1
-vlignef = int(input("Numéro de la ligne de fin de la liste des destinataires "))-1
+vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))-1
+vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))-1
 
 
 #######################################################################################################
 ##### Determiner le fichier excel
 
 while 1:
-    reponse = input("Taper 1 pour choisir le fichier excel ou libreoffice dans le repertoire actuel (recommandé)\nTaper 2 pour choisir un autre répertoire\n")
+    reponse = input("Taper 1 pour choisir le fichier excel ou libreoffice dans le repertoire actuel (recommande)\nTaper 2 pour choisir un autre repertoire\n")
     if reponse=='1':
         break
     elif reponse =='2':
@@ -143,7 +143,7 @@ for names in items: ###### tester les noms
         newlist2.append(names)
 print ("Contenu du dossier\n", newlist2)
 
-contenu = input("Entrer le nom complet du fichier contenant la base de donnée\n")
+contenu = input("Entrer le nom complet du fichier contenant la base de donnee\n")
 
 os.chdir(dossier) 
 
@@ -197,16 +197,16 @@ for x in range (vligned, vlignef+1):
 
 mail.quit()
 
-print (n, "mails envoyés")
+print (n, "mails envoyes")
 
 os.rename("sortie.txt", date+".txt" )
 
 
-Essai avec tableau complete
-Piece jointe ?
-Connection ?
-Lien Hypertexte ?
-essai wind
+#Essai avec tableau complete
+#Piece jointe ?
+#Connection ?
+#Lien Hypertexte ?
+#essai wind
 
 
 ##### Convertir lettre en chiffre
