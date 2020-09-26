@@ -49,7 +49,7 @@ mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
 
-usr = input("Entrez le mail utilisateur\n")
+usr = me#input("Entrez le mail utilisateur\n")
 mdp = input("Entrez le mot de passe\n")
 mail.login(usr, mdp)
 
@@ -331,6 +331,7 @@ print (n-1, "mails envoyes,",m,"erreurs")
 
 os.rename("sortie.txt", date+".txt" )
 
+# essai avec + 10 variables
 #Essai avec tableau complete
 #Connection ?
 #Lien Hypertexte ?
