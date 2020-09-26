@@ -27,7 +27,6 @@ def fct2 (lettre): ### fct verification lettre
 	while convert_char(lettre) == 0 :
 		print ("erreur")
 		lettre = input("Indiquer de nouveau la lettre\n")
-
 	else :
 		lettre = convert_char(lettre)
 		return lettre-1
@@ -49,7 +48,7 @@ mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
 
-usr = me#input("Entrez le mail utilisateur\n")
+usr = input("Entrez le mail utilisateur\n")
 mdp = input("Entrez le mot de passe\n")
 mail.login(usr, mdp)
 
@@ -331,6 +330,7 @@ print (n-1, "mails envoyes,",m,"erreurs")
 
 os.rename("sortie.txt", date+".txt" )
 
+## encodage fichier excel ?
 # essai avec + 10 variables
 #Essai avec tableau complete
 #Connection ?
