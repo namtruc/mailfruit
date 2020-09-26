@@ -20,8 +20,8 @@ def convert_char(old): ### fct convertion lettre en chiffre
 	if 65 <= new <= 90: # Majuscules
            return new - 64
 	elif 97 <= new <= 122: # Minuscules   
-		return new - 96 # Autres
-	return 0
+		return new - 96 
+	return 0 # Autres
        
 def fct2 (lettre): ### fct verification lettre
 	while convert_char(lettre) == 0 :
@@ -48,8 +48,6 @@ dossier_python = os_path.abspath(os_path.split(__file__)[0])
 mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
-#mail.login('cartman150', '')#############################################
-#usr = 'vincentd@gmx.us'#################################################################
 
 usr = input("Entrez le mail utilisateur\n")
 mdp = input("Entrez le mot de passe\n")
