@@ -338,4 +338,4 @@ os.rename("sortie.txt", date+".txt" )
 # tester erreur lignes vide
 ##### Faire fichier parametres
 ##### Essayer avec differant types de connection
-##### Tester avec 0 parametres  
+##### Tester avec 0 parametres  rrrrrr
