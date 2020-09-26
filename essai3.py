@@ -13,8 +13,27 @@ from email.utils import COMMASPACE, formatdate
 from email.mime.application import MIMEApplication
 from os import path as os_path
 
+def convert_char(old): ### fct convertion lettre en chiffre
+	if len(old) != 1:
+		return 0
+	new = ord(old)
+	if 65 <= new <= 90: # Majuscules
+           return new - 64
+	elif 97 <= new <= 122: # Minuscules   
+		return new - 96 # Autres
+	return 0
+       
+def fct2 (lettre): ### fct verification lettre
+	while convert_char(lettre) == 0 :
+		print ("erreur")
+		lettre = input("Indiquer de nouveau la lettre\n")
+
+	else :
+		lettre = convert_char(lettre)
+		return lettre-1
+		
 #me = 'anne_cecile.laveder@fruitstock.eu'
-#me = 'catalogue@fruitstock.eu'
+me = 'catalogue@fruitstock.eu'
 
 m=0
 n = 1
@@ -29,12 +48,12 @@ dossier_python = os_path.abspath(os_path.split(__file__)[0])
 mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
-mail.login('cartman150', '')#############################################
-usr = 'vincentd@gmx.us'#################################################################
+#mail.login('cartman150', '')#############################################
+#usr = 'vincentd@gmx.us'#################################################################
 
-#usr = input("Entrez le mail utilisateur\n")
-#mdp = input("Entrez le mot de passe\n"))
-#mail.login(usr, mdp)
+usr = input("Entrez le mail utilisateur\n")
+mdp = input("Entrez le mot de passe\n")
+mail.login(usr, mdp)
 
 while True:
      print("Connection reussie")
@@ -110,18 +129,27 @@ while True :
 
 #######################################################################################################
 ##### Definir les variables
+
 d = []
 
 nombre_variables = input("Entrer le nombre de variables presentes dans le texte du mail(nom, lien, etc...)\n")
 
-vmail = int(input("Indiquer le numero de la colonne comportant les adreses mail\n"))-1
-vdept = int(input("Indiquer le numero de la colonne comportant le departement\n"))-1
-vpnom = int(input("Indiquer le numero de la colonne comportant le prenom\n"))-1
+vmail = input("Indiquer la lettre de la colonne comportant les adreses mail\n")#-1
+vmail = fct2 (vmail)
+
+vdept = input("Indiquer la lettre de la colonne comportant le departement\n")#-1
+vdept = fct2 (vdept)
+
+vpnom = input("Indiquer la lettre de la colonne comportant le prenom\n")#-1
+vpnom = fct2 (vpnom)
 
 for x in range(1, (int(nombre_variables)+1)):
-	d.append(int(input("Numero de la colonne avec la variable "+str(x)+"\n"))-1)
+	vvar = input("Indiquer la lettre de la colonne comportant la variable "+str(x)+"\n")#)-1)
+	vvar = fct2 (vvar)
+	d.append(int(vvar))
 	
 vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))-1
+
 vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))-1
 
 
@@ -308,8 +336,6 @@ os.rename("sortie.txt", date+".txt" )
 #Essai avec tableau complete
 #Connection ?
 #Lien Hypertexte ?
-
-##### Convertir lettre en chiffre
 ##### Faire fichier parametres
 ##### Essayer avec differant types de connection
 ##### Tester avec 0 parametres
