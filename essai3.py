@@ -14,7 +14,7 @@ from email.mime.application import MIMEApplication
 from os import path as os_path
 
 #me = 'anne_cecile.laveder@fruitstock.eu'
-me = 'catalogue@fruitstock.eu'
+#me = 'catalogue@fruitstock.eu'
 
 m=0
 n = 1
@@ -29,8 +29,9 @@ dossier_python = os_path.abspath(os_path.split(__file__)[0])
 mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
-mail.login('cartman150', '1011806nancy')#############################################
+mail.login('cartman150', '')#############################################
 usr = 'vincentd@gmx.us'#################################################################
+
 #usr = input("Entrez le mail utilisateur\n")
 #mdp = input("Entrez le mot de passe\n"))
 #mail.login(usr, mdp)
@@ -304,7 +305,6 @@ print (n-1, "mails envoyes,",m,"erreurs")
 
 os.rename("sortie.txt", date+".txt" )
 
-# fonction?
 #Essai avec tableau complete
 #Connection ?
 #Lien Hypertexte ?
