@@ -18,7 +18,7 @@ def convert_char(old): ### fct convertion lettre en chiffre
 		return 0
 	new = ord(old)
 	if 65 <= new <= 90: # Majuscules
-           return new - 64
+		return new - 64
 	elif 97 <= new <= 122: # Minuscules   
 		return new - 96 
 	return 0 # Autres
@@ -48,13 +48,13 @@ mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
 
-usr = input("Entrez le mail utilisateur\n")
+usr = input("Entrez l'identifiant de connection (mail utilisateur)\n")
 mdp = input("Entrez le mot de passe\n")
 mail.login(usr, mdp)
 
 while True:
-     print("Connection reussie")
-     break
+	print("Connection reussie")
+	break
           
 print("Le mail de l'expediteur est :")
 print("1.", me)
