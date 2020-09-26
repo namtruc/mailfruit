@@ -335,6 +335,7 @@ os.rename("sortie.txt", date+".txt" )
 #Essai avec tableau complete
 #Connection ?
 #Lien Hypertexte ?
+# tester erreur lignes vide
 ##### Faire fichier parametres
 ##### Essayer avec differant types de connection
 ##### Tester avec 0 parametres
