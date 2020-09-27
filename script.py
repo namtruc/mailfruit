@@ -31,7 +31,6 @@ def fct2 (lettre): ### fct verification lettre
 		lettre = convert_char(lettre)
 		return lettre-1
 		
-#me = 'anne_cecile.laveder@fruitstock.eu'
 me = 'catalogue@fruitstock.eu'
 
 m=0
@@ -48,8 +47,8 @@ mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
 
-usr = input("Entrez l'identifiant de connection (mail utilisateur)\n")
-mdp = input("Entrez le mot de passe\n")
+usr = testfdspy #input("Entrez l'identifiant de connection (mail utilisateur)\n")
+mdp = input("Entrez le mot de passe pour"+usr"\n")
 mail.login(usr, mdp)
 
 while True:
