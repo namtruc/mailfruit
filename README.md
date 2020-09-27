@@ -5,6 +5,7 @@
 * installer pandas : lancer anaconda powershell prompt et inserer ` conda install -c anaconda pandas `
 * #####faire tuto pas a pas
 *
+* nom piece jointe ?
 * necessite le mail sous forme html
 * si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier contenant le script
 * **Ne marche pas avec l´adresse catalogue@fruitstock.eu**
