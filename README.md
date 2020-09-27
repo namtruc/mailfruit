@@ -8,6 +8,15 @@
 * nom piece jointe ?
 * necessite le mail sous forme html
 * si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier contenant le script
-* **Ne marche pas avec l´adresse catalogue@fruitstock.eu**
+* **Voire soucis encodage**
 * **Necessite de passer par un serveur gmail pour les adresses infomaniak**
 * **Mettre le tableur en xls si possible pour línstant**
+
+
+
+*# essai avec + 10 variables
+*#Lien Hypertexte ?
+*# tester erreur lignes vide
+*##### Faire fichier parametres
+*##### Essayer avec differant types de connection
+*##### Tester avec 0 parametres
