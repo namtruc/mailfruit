@@ -224,7 +224,6 @@ df = pd.DataFrame(pd.read_excel(contenu))
 
 #######################################################################################################
 ##### Verification
-  #### Mauvais num de ligne!!!!
   
 EMAIL_REGEX = re.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
 i = 0
