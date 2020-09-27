@@ -332,13 +332,3 @@ mail.quit()
 print (n-1, "mails envoyes,",m,"erreurs")
 
 os.rename("sortie.txt", date+".txt" )
-
-## encodage fichier excel ?
-# essai avec + 10 variables
-#Essai avec tableau complete
-#Connection ?
-#Lien Hypertexte ?
-# tester erreur lignes vide
-##### Faire fichier parametres
-##### Essayer avec differant types de connection
-##### Tester avec 0 parametres
