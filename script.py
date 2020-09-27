@@ -229,10 +229,10 @@ df = pd.DataFrame(pd.read_excel(contenu))
 EMAIL_REGEX = re.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
 i = 0
 
-for x in range (vligned, vlignef+1): ### verification validite mails
+for x in range (vligned, vlignef+1):
 	you = (df.iat[x-1,vmail])
 	if not EMAIL_REGEX.match(str(you)):
-		print ("erreur mail ligne "+str(x))      
+		print ("erreur mail ligne "+str(x-1))      
 		i = 1
 
 if i == 1 :
