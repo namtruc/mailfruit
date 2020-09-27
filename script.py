@@ -137,6 +137,9 @@ vmail = fct2 (vmail)
 vdept = input("Indiquer la lettre de la colonne comportant le departement\n")#-1
 vdept = fct2 (vdept)
 
+vgrp = input("Indiquer la lettre de la colonne comportant le groupe\n")#-1
+vgrp = fct2 (vgrp)
+
 vpnom = input("Indiquer la lettre de la colonne comportant le prenom\n")#-1
 vpnom = fct2 (vpnom)
 
@@ -311,14 +314,14 @@ for x in range (vligned, vlignef+1): ### determination adresse mail
 	try:
 		mail.sendmail(me, you, msg.as_string())         
 		with open("sortie.txt", "a") as myfile:
-			myfile.write(str(df.iat[x-1,vdept])+"/"+str(df.iat[x-1,vpnom])+"/"+you+" mail envoye\n")
+			myfile.write(str(df.iat[x-1,vdept])+"/"+str(df.iat[x-1,vpnom])+"/"+str(df.iat[x-1,vgrp])+"/"+you+" mail envoye\n")
 		print (str(n)+"/"+str(k))
 		n=n+1
 	except smtplib.SMTPException as f:
 		print ("Erreur dans un envoi")
 		print (f)
 		with open("sortie.txt", "a") as myfile:
-			myfile.write(str(df.iat[x-1,vdept])+"/"+str(df.iat[x-1,vpnom])+"/"+you+" MAIL NON ENVOYE\n")
+			myfile.write(str(df.iat[x-1,vdept])+"/"+str(df.iat[x-1,vpnom])+"/"+str(df.iat[x-1,vgrp])+"/"+you+" MAIL NON ENVOYE\n")
 		m=m+1
 
 
