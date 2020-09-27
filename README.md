@@ -14,9 +14,10 @@
 
 
 
-*# essai avec + 10 variables
-*#Lien Hypertexte ?
-*# tester erreur lignes vide
-*##### Faire fichier parametres
-*##### Essayer avec differant types de connection
-*##### Tester avec 0 parametres
+* # essai avec + 10 variables
+* #Lien Hypertexte ?
+* # tester erreur lignes vide
+* ##### Faire fichier parametres
+* ##### Essayer avec differant types de connection
+* ##### Tester avec 0 parametres
+* faire mime texte
