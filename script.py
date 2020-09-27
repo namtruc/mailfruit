@@ -12,6 +12,7 @@ from email import encoders
 from email.utils import COMMASPACE, formatdate
 from email.mime.application import MIMEApplication
 from os import path as os_path
+from configparser import ConfigParser  
 
 def convert_char(old): ### fct convertion lettre en chiffre
 	if len(old) != 1:
@@ -30,9 +31,13 @@ def fct2 (lettre): ### fct verification lettre
 	else :
 		lettre = convert_char(lettre)
 		return lettre-1
-		
-me = 'catalogue@fruitstock.eu'
-usr = testfdspy
+
+parser = ConfigParser() 
+parser.read('configuration.ini')
+me = parser.get('settings', 'mail_expe')## 'catalogue@fruitstock.eu'##################3
+usr = parser.get('settings', 'username')#testfdspy#################3
+srv = parser.get('settings', 'srv_smtp')
+prt = parser.get('settings', 'prt_smtp')
 
 m=0
 n = 1
@@ -44,12 +49,12 @@ dossier_python = os_path.abspath(os_path.split(__file__)[0])
 #######################################################################################################
 #####Connection
 
-mail = smtplib.SMTP('smtp.gmail.com', 587)
+mail = smtplib.SMTP(srv, prt)
 mail.ehlo()
 mail.starttls()
 
 #input("Entrez l'identifiant de connection (mail utilisateur)\n")
-mdp = input("Entrez le mot de passe pour"+usr"\n")
+mdp = input("Entrez le mot de passe pour "+usr+"\n")
 mail.login(usr, mdp)
 
 while True:
@@ -176,15 +181,15 @@ while 1:
 		print ("Choix incorrect !")
 
 if l == 0 :
-	
+
 	nbr_pj = int(input("Nombre de pieces jointes\n"))
-	
+
 	items = os.listdir(dossier_pj)
 	newlist3 = []
 	for names in items:
 		newlist3.append(names)
 	print ("Contenu du dossier\n", newlist3)
-	
+
 	for x in range (nbr_pj):
 		e.append(str(input("Entrer le nom complet de la piece jointe "+str(x+1)+"\n")))
 
