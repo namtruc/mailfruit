@@ -32,6 +32,7 @@ def fct2 (lettre): ### fct verification lettre
 		return lettre-1
 		
 me = 'catalogue@fruitstock.eu'
+usr = testfdspy
 
 m=0
 n = 1
@@ -47,7 +48,7 @@ mail = smtplib.SMTP('smtp.gmail.com', 587)
 mail.ehlo()
 mail.starttls()
 
-usr = testfdspy #input("Entrez l'identifiant de connection (mail utilisateur)\n")
+#input("Entrez l'identifiant de connection (mail utilisateur)\n")
 mdp = input("Entrez le mot de passe pour"+usr"\n")
 mail.login(usr, mdp)
 
