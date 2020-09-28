@@ -152,7 +152,9 @@ for x in range(1, (int(nombre_variables)+1)):
 	vvar = input("Indiquer la lettre de la colonne comportant la variable "+str(x)+"\n")#)-1)
 	vvar = fct2 (vvar)
 	d.append(int(vvar))
+
 	
+	##### Par bloque a faire
 vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))-1
 
 vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))-1
@@ -229,7 +231,7 @@ df = pd.DataFrame(pd.read_excel(contenu))
 
 #######################################################################################################
 ##### Verification
-  
+  ##### a faire case vide apres convertion cvs(fct)
 EMAIL_REGEX = re.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
 i = 0
 
