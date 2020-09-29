@@ -340,7 +340,7 @@ if essai == 1 :
 
 essai3 = int(input("Afficher la base de donnee modifiee qui sera traitee par le programme ? \n1 : oui\n2 : non\n"))
 if essai3 == 1 :
-	print (df)
+	print (df) #^^^^^^^^^^^^^^^^^^ affiche en entier
 		
 essai2 = int(input(str(len(df.index))+" mails seront envoyes \n1 : oui\n2 : non\n"))
 if essai2 == 2 :
@@ -400,3 +400,7 @@ print (n-1, "mails envoyes,",m,"erreurs")
 
 os.rename("sortie.txt", date+".txt" )
 os.remove("Test.csv")
+
+fin = input("Envois termines, appuyer sur une touche pour quitter le programme")
+
+#^^^^^^^^^ erreur si mail vide, case cochee ou pas
