@@ -145,6 +145,9 @@ while True :
 
 d = []
 
+print ("-----Attention, une erreur de frappe peut entrainer le crash du programme-----")
+time.sleep(3)
+
 nombre_variables = input("Entrer le nombre de variables presentes dans le texte du mail(nom, lien, etc...)\n")
 
 vmail = input("Indiquer la lettre de la colonne comportant les adreses mail\n")#-1
@@ -168,10 +171,13 @@ for x in range(1, (int(nombre_variables)+1)):
 	
 #################################
 
+
+print ("-----Attention, les mails seront envoyes uniquement aux responsables avec case cochee avec x ou X sur le tableur-----")
+print ("-----Tout autre lettre dans la colonne responsable empechera l'envoi du mail-----")
+time.sleep(3)
+
 vresp = input("Indiquer la lettre de la colonne cochee indiquant les responsables de groupe\n")
 vresp = fct2 (vresp)
-print ("-----Attention, les mails seront envoyes uniquement aux responsables avec case cochee sur le tableur-----")
-time.sleep(3)
 
 vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))-1
 
@@ -244,7 +250,7 @@ print ("Contenu du dossier\n", newlist2)
 
 contenu = input("Entrer le nom complet du fichier contenant la base de donnee\n")
 
-v_sheet = int(input("Entrer le numero de la feuille excel\n"))-1 #################################^^^^^a verifier sur excel
+v_sheet = int(input("Entrer le numero de la feuille excel\n"))-1
 
 os.chdir(dossier) 
 
@@ -264,6 +270,10 @@ vresp = df.columns.values[vresp]
 
 df.dropna(subset=[vresp], inplace=True)######suppression des non-responsable
 
+df[vresp] = df[vresp].str.strip() #### suppression espace colonne resp
+
+df = df[(df[vresp].str.match('X'))|(df[vresp].str.match('x'))]#### suppression resp sans X
+
 list = []
 
 for x in range (1,len(df.index)+1):
@@ -277,12 +287,39 @@ df.index = list
 EMAIL_REGEX = re.compile("[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
 i = 0
 		
+df2 = df
+
 for x in range (1,len(df.index)+1):
 	you = (df.iat[x-1,vmail])
+	if str(you) == "nan": ## verif case vide
+		print ("\n----Mail manquant groupe "+str(df.iat[x-1,vgrp])+"----\n")
+		reponse_mail = int(input("1 pour continuer sans envoyer ce mail\n2 pour arreter le programme apres verification des autres mail\n3 pour entrer l'adresse manuellement \n"))
+		if reponse_mail == 1 :
+			df2 = df2.drop([x])
+			you = 'aaa'
+			i = i-1
+		if reponse_mail == 2 :
+			you = 'aaa'
+			i=1
+		if reponse_mail == 3 :
+			vmail2 = df.columns.values[vmail] 
+			reponse_mail2 = input("\n Entrer l'adresse voulue\n")
+			df.at[x,vmail2] = reponse_mail2
+			you = (df.iat[x-1,vmail])
+			
 	you = you.strip()
 	if not EMAIL_REGEX.match(str(you)):
-		print ("erreur mail groupe "+str(df.iat[x-1,vgrp]))    
-		i = 1
+		print ("----Erreur mail groupe "+str(df.iat[x-1,vgrp])+"----\n")    
+		i = i+1
+
+df = df2
+
+list2 = [] ### reconstruction de l'index
+
+for x in range (1,len(df.index)+1):
+ list2.append(x)
+
+df.index = list2
 
 fct3 (vdept, 'departement')
 fct3 (vpnom, 'prenom')
@@ -300,12 +337,12 @@ if essai == 1 :
 	you = input("L´adresse mail pour l´essai\n")
 	x = random.randint(0,len(df.index)) 
 	file_out2 = file_out
-	print("Essai avec le groupe "+str(df.iat[x,vgrp]))
+	print("Essai avec le groupe "+str(df.iat[x-1,vgrp]))
 	
 	for y in range (1, (int(nombre_variables)+1)): ### remplacement variable
 		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x,d[y-1]]))
 	
-	titre2 = ("["+str(df.iat[x,vdept])+"_"+str(df.iat[x,vpnom])+"] "+titre)
+	titre2 = ("["+str(df.iat[x-1,vdept])+"_"+str(df.iat[x-1,vpnom])+"] "+titre)
 
 	msg = MIMEMultipart()
 	msg['Subject'] = titre2
@@ -402,5 +439,3 @@ os.rename("sortie.txt", date+".txt" )
 os.remove("Test.csv")
 
 fin = input("Envois termines, appuyer sur une touche pour quitter le programme")
-
-#^^^^^^^^^ erreur si mail vide, case cochee ou pas
