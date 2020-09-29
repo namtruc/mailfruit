@@ -148,7 +148,7 @@ d = []
 print ("-----Attention, une erreur de frappe peut entrainer le crash du programme-----")
 time.sleep(3)
 
-nombre_variables = input("Entrer le nombre de variables presentes dans le texte du mail(nom, lien, etc...)\n")
+nombre_variables = input("Entrer le nombre de variables presentes dans le texte du mail, max 10\n")
 
 vmail = input("Indiquer la lettre de la colonne comportant les adreses mail\n")#-1
 vmail = fct2 (vmail)
@@ -179,9 +179,9 @@ time.sleep(3)
 vresp = input("Indiquer la lettre de la colonne cochee indiquant les responsables de groupe\n")
 vresp = fct2 (vresp)
 
-vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))-1
+vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))
 
-vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))-1
+vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))
 
 
 #######################################################################################################
@@ -258,20 +258,20 @@ os.chdir(dossier)
 #########################################################################
 # Convertion fichier excel
 
-read_file = pd.read_excel(contenu, sheet_name=v_sheet) 
+vnbrligne = ((vlignef+1)-vligned)
+
+read_file = pd.read_excel(contenu,skiprows = vligned-2)         
 read_file.to_csv ("Test.csv",  
                   index = None, 
-                  header = True) ################uft8 a faire^^^^^^^^^^^^^^^^^^6
-
+                  header = True)################uft8 a faire
 
 df = pd.DataFrame(pd.read_csv("Test.csv")) 
+df = df[:vnbrligne]
 
 vresp = df.columns.values[vresp] 
 
-df.dropna(subset=[vresp], inplace=True)######suppression des non-responsable
-
-df[vresp] = df[vresp].str.strip() #### suppression espace colonne resp
-
+pd.DataFrame(df.dropna(subset=[vresp], inplace=True)) ######suppression des non-resp
+df[vresp] = df[vresp].str.strip()#### suppression espace colonne resp
 df = df[(df[vresp].str.match('X'))|(df[vresp].str.match('x'))]#### suppression resp sans X
 
 list = []
