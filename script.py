@@ -136,8 +136,10 @@ with open(contenu, 'r', encoding="utf8") as file_in :
 
 os.chdir(dossier_python)
 
-while True : ##### variabe dans titre
+while True : 
   titre = input("Entrer le titre du mail :\n")
+  print ("-------------------------------------")
+  print ("[00_perpette les oies]"+titre)
   reponse = input("1. OK\n2.Recommencer\nChoisir 1 ou 2\n")
   if reponse=='1':
       break
@@ -310,10 +312,12 @@ if essai == 1 :
 	print("Essai avec le groupe "+str(df.iat[x,vgrp]))
 	
 	for y in range (1, (int(nombre_variables)+1)): ### remplacement variable
-		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x-1,d[y-1]]))
-		
+		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x,d[y-1]]))
+	
+	titre2 = ("["+str(df.iat[x,vdept])+"_"+str(df.iat[x,vpnom])+"] "+titre)
+
 	msg = MIMEMultipart()
-	msg['Subject'] = titre
+	msg['Subject'] = titre2
 	msg['From'] = me
 	msg['To'] = you
 	msg['Date'] = formatdate(localtime=True)
@@ -362,9 +366,11 @@ for x in range (1,len(df.index)+1): ### determination adresse mail
 	file_out2 = file_out
 	for y in range (1, (int(nombre_variables)+1)): ### remplacement variable
 		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x-1,d[y-1]]))
-		
+	
+	titre2 = ("["+str(df.iat[x-1,vdept])+"_"+str(df.iat[x-1,vpnom])+"] "+titre)
+	
 	msg = MIMEMultipart()
-	msg['Subject'] = titre
+	msg['Subject'] = titre2
 	msg['From'] = me
 	msg['To'] = you
 	msg['Date'] = formatdate(localtime=True)
