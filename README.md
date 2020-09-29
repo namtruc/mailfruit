@@ -14,9 +14,4 @@
 
 
 
-*  essai avec + 10 variables
-* Lien Hypertexte ?
-*  tester erreur lignes vide
-* Essayer avec differant types de connection
-*  Tester avec 0 parametres
 * faire mime texte
