@@ -82,8 +82,7 @@ while True:
 print("Le mail de l'expediteur est :")
 print("1.", me)
 print("2.", usr)
-print("3. Entrer une autre adresse")
-print("4. Quitter le programme")
+print("3. Quitter le programme")
 
 while 1:
     reponse = input("Choisir 1,2,3 ou 4:\n")
@@ -93,15 +92,7 @@ while 1:
         me = usr
         break
     elif reponse=='3':
-        me = input("Rentrer l'adresse voulue\n")
-        print("-----")
-        print("Le mail de l'expediteur est :")
-        print("1.", me)
-        print("2.", usr)
-        print("3. Entrer une autre adresse")
-        print("4. Quitter le programme")
-    elif reponse=='4':
-        sys.exit(0)
+       sys.exit(0)
     else:
         print ("Choix incorrect !")
     
