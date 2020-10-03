@@ -260,13 +260,17 @@ os.chdir(dossier)
 
 vnbrligne = ((vlignef+1)-vligned)
 
-read_file = pd.read_excel(contenu,skiprows = vligned-2)         
+read_file = pd.read_excel(contenu,sheet_name=v_sheet,skiprows = vligned-1, header=None)         
 read_file.to_csv ("Test.csv",  
                   index = None, 
                   header = True)################uft8 a faire
 
+#print (read_file)##########
+
 df = pd.DataFrame(pd.read_csv("Test.csv")) 
 df = df[:vnbrligne]
+
+#print (df)############
 
 vresp = df.columns.values[vresp] 
 
@@ -280,6 +284,7 @@ for x in range (1,len(df.index)+1):
  list.append(x)
 
 df.index = list
+########print (df)
 
 #######################################################################################################
 ##### Verification
@@ -335,14 +340,14 @@ essai = int(input("Voulez vous faire un essai sur votre adresse mail ?\n1 : oui\
 
 if essai == 1 :
 	you = input("L´adresse mail pour l´essai\n")
-	x = random.randint(0,len(df.index)) 
+	x = random.randint(1,len(df.index)) 
 	file_out2 = file_out
-	print("Essai avec le groupe "+str(df.iat[x-1,vgrp]))
+	print("Essai avec le groupe "+str(df.iat[x,vgrp]))
 	
 	for y in range (1, (int(nombre_variables)+1)): ### remplacement variable
-		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x,d[y-1]]))
+		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x,d[y-1]]))############# a verif
 	
-	titre2 = ("["+str(df.iat[x-1,vdept])+"_"+str(df.iat[x-1,vpnom])+"] "+titre)
+	titre2 = ("["+str(df.iat[x,vdept])+"_"+str(df.iat[x,vgrp])+"] "+titre)
 
 	msg = MIMEMultipart()
 	msg['Subject'] = titre2
@@ -388,14 +393,14 @@ if essai2 == 2 :
 ##### Envoi du mail
 
 
-for x in range (1,len(df.index)+1): ### determination adresse mail 
-	you = (df.iat[x-1,vmail])
+for x in range (0,len(df.index)): ### determination adresse mail 
+	you = (df.iat[x,vmail])
 	you = you.strip()
 	file_out2 = file_out
 	for y in range (1, (int(nombre_variables)+1)): ### remplacement variable
-		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x-1,d[y-1]]))
+		file_out2 = file_out2.replace('variable'+str(y), str(df.iat[x,d[y-1]]))
 	
-	titre2 = ("["+str(df.iat[x-1,vdept])+"_"+str(df.iat[x-1,vpnom])+"] "+titre)
+	titre2 = ("["+str(df.iat[x,vdept])+"_"+str(df.iat[x,vgrp])+"] "+titre)
 	
 	msg = MIMEMultipart()
 	msg['Subject'] = titre2
