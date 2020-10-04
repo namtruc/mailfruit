@@ -9,7 +9,7 @@
 * si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier contenant le script
 * **Voire soucis encodage**
 * **Necessite de passer par un serveur gmail pour les adresses infomaniak**
-* **Mettre le tableur en xls si possible pour l'instant**
+* **Mettre le tableur en xls ou xlsx si possible pour l'instant**
 *
 *
 
@@ -17,3 +17,7 @@
 * A faire
 * #####faire tuto pas a pas
 * faire mime texte
+* passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
+* changer le contenu du dossier en liste et laisser choisir un numero
+* creer titre mail automatiquement 
+* trouver editeur html
