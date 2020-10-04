@@ -21,3 +21,4 @@
 * changer le contenu du dossier en liste et laisser choisir un numero
 * creer titre mail automatiquement 
 * trouver editeur html
+* reverifier erreurs case vide
