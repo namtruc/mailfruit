@@ -20,5 +20,6 @@
 * passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
 * changer le contenu du dossier en liste et laisser choisir un numero
 * creer titre mail automatiquement 
+* verifierr si sheet>1 et proposer choix numero
 * trouver editeur html
 * reverifier erreurs case vide
