@@ -20,6 +20,6 @@
 * faire mime texte
 * trouver editeur html
 *
-* passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
+* merger les 2 fichiers excel
 * reverifier erreurs case vide
 
