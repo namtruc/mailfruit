@@ -23,3 +23,4 @@
 * verifierr si sheet>1 et proposer choix numero
 * trouver editeur html
 * reverifier erreurs case vide
+* renommer fichier sortie avant la fin envoi
