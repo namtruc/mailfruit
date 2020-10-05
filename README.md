@@ -15,13 +15,16 @@
 
 
 * A faire
-* #####faire tuto pas a pas
+*
+* faire tuto pas a pas
 * faire mime texte
+* trouver editeur html
+*
 * passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
 * changer le contenu du dossier en liste et laisser choisir un numero
-* creer titre mail automatiquement 
 * verifierr si sheet>1 et proposer choix numero
-* trouver editeur html
 * reverifier erreurs case vide
 * renommer fichier sortie avant la fin envoi
-* masque mdp
+* supprimer dept (avertir)
+* laisser choix ligne
+
