@@ -21,8 +21,6 @@
 * trouver editeur html
 *
 * passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
-* changer le contenu du dossier en liste et laisser choisir un numero
-* verifierr si sheet>1 et proposer choix numero
 * reverifier erreurs case vide
 * renommer fichier sortie avant la fin envoi
 * supprimer dept (avertir)
