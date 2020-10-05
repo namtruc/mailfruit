@@ -6,7 +6,7 @@
 * 
 *
 * necessite le mail sous forme html
-* si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier contenant le script
+* si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier fichiers_usr present dans le fichier du script
 * **Voire soucis encodage**
 * **Necessite de passer par un serveur gmail pour les adresses infomaniak**
 * **Mettre le tableur en xls ou xlsx si possible pour l'instant**
