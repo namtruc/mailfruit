@@ -261,6 +261,7 @@ os.chdir(dossier)
 vnbrligne = ((vlignef+1)-vligned)
 
 read_file = pd.read_excel(contenu,sheet_name=v_sheet,skiprows = vligned-1, header=None)         
+
 read_file.to_csv ("Test.csv",  
                   index = None, 
                   header = True)################uft8 a faire
@@ -330,7 +331,7 @@ fct3 (vdept, 'departement')
 fct3 (vpnom, 'prenom')
 fct4 (vgrp, 'groupe')
 
-if i == 1 :
+if i == 1 :##########################################################nbr erreur
 	sys.exit(0)
 
 ###################################################################	
