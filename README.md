@@ -22,4 +22,4 @@
 *
 * merger les 2 fichiers excel
 * reverifier erreurs case vide
-
+* mettre pj et excel dan un dossier specifique
