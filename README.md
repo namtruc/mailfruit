@@ -24,3 +24,4 @@
 * trouver editeur html
 * reverifier erreurs case vide
 * renommer fichier sortie avant la fin envoi
+* masque mdp
