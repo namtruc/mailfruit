@@ -22,6 +22,6 @@
 *
 * passer les colonnes dans le fichier config et l'afficher + donner choix d'y changer
 * reverifier erreurs case vide
-* renommer fichier sortie avant la fin envoi
-
+* renommer fichier sortie avant la fin envoi et le placer dans dossier python
+* emplacement test csv?
 
