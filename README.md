@@ -6,6 +6,7 @@
 * 
 *
 * necessite le mail sous forme html
+* https://html-online.com/editor/ https://emojipedia.org/emoji-1.0/
 * si possible mettre tous les fichiers (html, piece jointe, tableur) dans la dossier fichiers_usr present dans le fichier du script
 * **Voire soucis encodage**
 * **Necessite de passer par un serveur gmail pour les adresses infomaniak**
