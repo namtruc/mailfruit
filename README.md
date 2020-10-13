@@ -1,9 +1,8 @@
-* python 3 et pandas necessaires
 *
 * installer python : /www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&activetab=pivot:overviewtab
-* installer anaconda : https://www.anaconda.com/products/individual#Downloads
-* installer pandas : lancer anaconda powershell prompt et inserer ` conda install -c anaconda pandas `
-* 
+* lancer invite de commande
+* dans l'invite de commande taper ` pip install pandas xlrd openpyxl `
+* ouvrir le dossier mailfruit, cliquer sur fichier, Ouvrir Windows PowerShell et taper ` python script.py `
 *
 * necessite le mail sous forme html
 * https://html-online.com/editor/ https://emojipedia.org/emoji-1.0/
