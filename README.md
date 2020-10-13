@@ -23,3 +23,5 @@
 *
 * merger les 2 fichiers excel
 * reverifier erreurs case vide
+* erreur random 
+* sheet script2 ????
