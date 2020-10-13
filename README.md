@@ -21,7 +21,6 @@
 * faire mime texte
 * trouver editeur html
 *
-* merger les 2 fichiers excel
-* reverifier erreurs case vide
-* erreur random 
-* sheet script2 ????
+* erreurs case vide proposer redaction ou annulation avec creation fonction verif avec retour
+
+
