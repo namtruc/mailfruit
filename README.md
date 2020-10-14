@@ -1,7 +1,7 @@
 *
 * installer python : /www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&activetab=pivot:overviewtab
 * lancer invite de commande
-* dans l'invite de commande taper ` pip install pandas xlrd openpyxl `
+* dans l'invite de commande taper ` pip install pandas xlrd openpyxl html2text
 * ouvrir le dossier mailfruit, cliquer sur fichier, Ouvrir Windows PowerShell et taper ` python script.py `
 *
 * necessite le mail sous forme html
@@ -17,7 +17,7 @@
 * A faire
 *
 * faire tuto pas a pas
-* faire mime texte
+* 
 * smtp code erreur
 
 
