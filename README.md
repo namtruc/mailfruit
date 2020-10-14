@@ -18,10 +18,6 @@
 *
 * faire tuto pas a pas
 * faire mime texte
-* trouver editeur html
-*
-* erreurs case vide proposer redaction ou annulation avec creation fonction verif avec retour
-* email.parser: creer automatiquement mail ?
 * smtp code erreur
 
-* Dossier pice jointe a redefinir
+
