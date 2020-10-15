@@ -1,5 +1,5 @@
 *
-* installer python : /www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&activetab=pivot:overviewtab
+* Installer python : [lien du Microsoft Store](www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&activetab=pivot:overviewtab)
 * lancer invite de commande
 * dans l'invite de commande taper ` pip install pandas xlrd openpyxl html2text
 * ouvrir le dossier mailfruit, cliquer sur fichier, Ouvrir Windows PowerShell et taper ` python script.py `
