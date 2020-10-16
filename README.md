@@ -17,6 +17,7 @@
 
 ## Utilisation du programme
 
+* Aucun fichier n'est modifié ou supprimé par ce programme
 * Nécessite de passer par un serveur gmail, vous devez avoir les identifiants pour utiliser ce programme
 * Le mail peut être récupérer soit en l´envoyant à l´adresse gmail (il sera récupéré par la suite) soit en l´enregistrant sous format html (certains clients de messagerie proposent cette option, me contacter si besoin)
 * Le mail doit être rédigé avec les termes variable1, variable2, etc... à la place des mots ou des liens (attention à la redirection) qui devront être remplacés par les valeurs présente dans les fichiers excels. L´ordre importe peu, 9 variables max
