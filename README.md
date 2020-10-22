@@ -7,7 +7,7 @@
 
 ## Utilisateurs Windows 10
 
-* Installer python : [http://www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&amp;activetab=pivot:overviewtab](http://)
+* Installer python : [Sur le store de microsoft](http://www.microsoft.com/fr-fr/p/python-37/9nj46sx7x90p?rtc=1&amp;activetab=pivot:overviewtab)
 * Dans la barre de recherche du menu démarrer  taper `cmd` et lancer l´application *invite de commande*
 * Dans l’invite de commande taper `pip install pandas xlrd openpyxl html2text`
 * Fermer cette invite de commande
@@ -17,7 +17,7 @@
 
 ## Mail et spam
 
-* A remplir, voir [https://www.mail-tester.com/](http://)
+* A remplir, voir [https://www.mail-tester.com/](https://www.mail-tester.com/)
 
 ## Utilisation du programme
 
