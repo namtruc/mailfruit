@@ -46,3 +46,6 @@
 <li>Retwiin via le serveur discord du groupe ou par mail <a href="mailto:vincent_fds@gmx.com">vincent_fds@gmx.com</a></li>
 </ul>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1NTQ2NTc2MThdfQ==
+-->
