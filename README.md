@@ -67,22 +67,8 @@
 
 ## Contact
 
- - Retwiin via le serveur discord du groupe ou par mail vincent_fds@gmx.comossier fichiers_usr present dans le dossier mailfruit</li>
-<li>Mettre les tableurs en xls ou xlsx</li>
-<li>Pas d´inquiétude, il y a la possibilité d´envoyer un mail d´essai à l´adresse de son choix avant de finaliser la procédure</li>
-<li>Des fichiers tests sons dispo dans le dossier <em>test</em> avec des bases de donnée fictive et des exemples de mail</li>
-<li><strong>Attention à bien lire ce que le programme affiche pour éviter d´envoyer 80 mauvais mails</strong></li>
-</ul>
-<h2 id="catalogue">Catalogue</h2>
-<ul>
-<li>En cours</li>
-<li>Le script ‘commande’ permet, à partir de la base de données client et du fichier commande de générer les fichier à mettre dans OneDrive avec le nom correspondant au groupe et en pré-remplissant la case département pour débloquer les prix</li>
-</ul>
-<h2 id="contact">Contact</h2>
-<ul>
-<li>Retwiin via le serveur discord du groupe ou par mail <a href="mailto:vincent_fds@gmx.com">vincent_fds@gmx.com</a></li>
-</ul>
+ - Retwiin via le serveur discord du groupe ou par mail vincent_fds@gmx.com
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0OTMwODkyMl19
+eyJoaXN0b3J5IjpbMTc4NDk5NTE1MywtNTQ5MzA4OTIyXX0=
 -->
