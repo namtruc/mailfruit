@@ -27,7 +27,7 @@
 <li>Nécessite de passer par un serveur gmail, vous devez avoir les identifiants pour utiliser ce programme</li>
 <li>Le mail <s>peut être récupérer soit en l´envoyant à l´adresse gmail (il sera récupéré par la suite)</s>  (à éviter, source d´erreur) soit en l´enregistrant sous format html (certains clients de messagerie proposent cette option, me contacter si besoin)</li>
 <li>Le mail doit être rédigé avec les termes variable1, variable2, etc… à la place des mots ou des liens (attention à la redirection) qui devront être remplacés par les valeurs présente dans les fichiers excels. L´ordre importe peu, 9 variables max</li>
-<li>Si possible mettre tous les fichiers (html, piece jointe, tableur) dans le d## akoiçassaire
+<li>Si possible mettre tous les fichiers (html, piece jointe, tableur) dans le dossier_utilisateur
 
  - Ce programme sert à envoyer les liens catalogues chaque semaine par mail
  - Il lit les bases de données et modifie automatiquement chaque mail avec les données de son choix (prénom et lien par exemple)
@@ -43,5 +43,5 @@
  - Retwiin via le serveur discord du groupe ou par mail vincent_fds@gmx.com
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MDU5NDk2MiwtNTQ5MzA4OTIyXX0=
+eyJoaXN0b3J5IjpbLTEzMzQyMjA0NjYsLTU0OTMwODkyMl19
 -->
