@@ -1,7 +1,7 @@
 ## akoiçassaire
 
 
-* Ce programme sert à envoyer les liens catalogues chaque semaine par mail
+*   Ce programme sert à envoyer les liens catalogues chaque semaine par mail
 * Il lit les bases de données et modifie automatiquement chaque mail avec les données de son choix (prénom et lien par exemple)
 * Il peut prendre en compte 2 tableurs différents si les liens sont sur un autre fichier que sur celui des ID clients
 
