@@ -1,1 +1,3 @@
-test.txt
+fichiers_utilisateur/*
+config.py
+configuration.ini
