@@ -1,4 +1,5 @@
 ### TODO
+# enregistrer les fichiers dans un rep temp
 # Proposer creation dossier et recup ID
 # verifier list-error
 # Creation Dossier archive ?
@@ -65,113 +66,151 @@ def device_flow_session(client_id, auto=True):
 
     return session
 
+########################
+######################
+#####################
 
-def creation_nom():
+
+def creation_nom(sav):
 
     dico = dict()
     #dico2 = dict()
     
     for x in range (len(df_envoi.index)):
 
-        dico[x] = ('cmd_'+str(df_envoi.iat[x,vdept])+'_'+str(df_envoi.iat[x,vgrp])+'_S'+semaine+'.xlsx')	
-    	#dico.update( {df_envoi.iat[x,vgrp] : df_envoi.iat[x,vdept]} )
-        #dico2[x] = ''
+        if sav == False :
 
-    #print (dico)	
-    #print (len(df.index))
-    
-        #for key,value in dico.items() : 
+            dico[x] = ('cmd_'+str(df_envoi.iat[x,vdept])+'_'+str(df_envoi.iat[x,vgrp])+'_S'+semaine+'.xlsx')	
+
+        if sav == True :
+
+            dico[x] = ('sav_'+str(df_envoi.iat[x,vdept])+'_'+str(df_envoi.iat[x,vgrp])+'_S'+semaine+'.xlsx')	
 
     return dico
  
+###
 
-def fct_upload (name, repeat, nom_dossier,index):
-    
-    n = 0
-    headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
-    data = open(name, 'rb')
-    r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name+':/content', data=(data), headers=headers)
+def remplissage (index, lien,sav_lien):
 
-    while True :
+    #print('rempl '+str(sav_lien))
+    if sav_lien == True :
 
-        if str(r) == '<Response [200]>' or str(r) == '<Response [201]>':
+        df_envoi.at[index, 'sav'] = lien
 
-            print (name + ' Upload ok')
-            ### fct_remplissage_cat
-            fct_share(index, nom_dossier,name)
-            #list_error.append('Ca marche ')###################
-            os.remove (name)
+    else :
 
-            break
+        df_envoi.at[index, 'lien'] = lien
 
-        elif n < 2  and repeat == True:
-
-            print (str(r))
-            print ('Erreur, attendre 10s')
-            time.sleep(10)
-            n = n+1
-
-        elif n >= 2  and repeat == True:
-
-            print (str(r))
-            print ('ERREUR UPLOAD '+name)
-            list_error.append('Erreur Upload '+name)
-
-            break
-
-        else :
-
-            print ('Erreur non defenitive '+name) 
-            dic_nom_error[index] = name
-
-            break
-
-
-def fct_share(index,nom_dossier,name):
-    m = 0
-
-    while True:
-
-        r = session.post('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name+':/createlink',json = {"type": "edit", "scope": "anonymous"})
-
-        if str(r) == '<Response [200]>' or str(r) == '<Response [201]>':
-
-           print (name + ' Partage ok')
-           d = (r.json().get('link'))
-           link = d.get('webUrl')
-           remplissage (index,link)
-           #list_error_share.append('ca marche')###################
-
-           break 
-
-        elif m>= 2 :
-
-            print (str(r))
-            print ('ERREUR PARTAGE '+name)
-            list_error.append('Erreur partage '+name)
-
-            break
-
-        else :
-
-            print (str(r))
-            print ('Erreur attendre 10s')
-            m = m+1
-            time.sleep (10)
-
-
-def remplissage (index, lien):
-
-    #input ('lien : '+lien)
-    df_envoi.at[index, 'lien'] = lien
-    #print (df_envoi.loc[index].at['lien'] )
-    #input ()
-
-
+###
 
 def fct_copy(dst,src):
 
     copyfile(src, dst)
+
+
+#################
+################
+###############
+
+def fct_upload (name_cat,name_sav, repeat, nom_dossier,index,SAV):
+    
+    print ("\n")
+    print (name_cat)
+    headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
+    data = open(name_cat, 'rb')
+    r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name_cat+':/content', data=(data), headers=headers)
+
+    fct_retour (r, 'Upload', False, repeat,name_cat,name_sav,False)
+
+
+    if SAV == True: 
+        
+        print (name_sav)
+        #headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
+        data = open(name_sav, 'rb')
+
+        r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/SAV/'+name_sav+':/content', data=(data), headers=headers)
+        
+        fct_retour (r, 'Upload', False, repeat,name_cat,name_sav,True)
+
+
+###
+
+def fct_share(name_cat, name_sav, repeat,nom_dossier,index,sav_lien):
+
+    m = 0
+    #input (str(SAV))
+
+    if sav_lien == True: 
+
+        #print (name+'%%%%%%%%')
+        #print ('ok')
+        r = session.post('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/SAV/'+name_sav+':/createlink',json = {"type": "edit", "scope": "anonymous"})
+
+        #print (str(r))
+        fct_retour (r, 'Partage', True, repeat,name_cat,name_sav, True)
+
+    else :
+
+        #print (name+'%%%%%%%%')
+        r = session.post('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name_cat+':/createlink',json = {"type": "edit", "scope": "anonymous"})
+
+        fct_retour (r, 'Partage', True, repeat,name_cat,name_sav, False)
+
+###
+
+def fct_retour(r, text, share, repeat,name_cat,name_sav,sav_lien):
+
+    n = 0
+    if sav_lien == True :
+        name = name_sav
+    else :
+        name = name_cat
+
+    while True :
+    
+           if str(r) == '<Response [200]>' or str(r) == '<Response [201]>':
+
+               if share == True :
+
+                    print (text +' ok')
+                    d = (r.json().get('link'))
+                    link = d.get('webUrl')
+                    remplissage (index,link,sav_lien)
+
+                    break
+    
+               else :
+
+                    print (text +' ok')
+                    fct_share(name_cat, name_sav, repeat,nom_dossier,index,sav_lien)
+                    os.remove (name)
+    
+                    break
+    
+           elif n < 2  and repeat == True:
+    
+               print (str(r))
+               print ('Erreur, attendre 10s')
+               time.sleep(10)
+               n = n+1
+    
+           elif n >= 2  and repeat == True:
+    
+               print (str(r))
+               print ('ERREUR '+text+name)
+               list_error.append('Erreur '+text+name)
+    
+               break
+    
+           else :
+
+               print (str(r)) 
+               print ('Erreur non defenitive '+text+name) 
+               dico_nom_error[index] = name_cat
+    
+               break
+
 
 
 ###################################################################################################
@@ -196,21 +235,46 @@ df_envoi = pd.read_csv('Test.csv')
 os.remove('Test.csv')
 
 df_envoi['lien']=''
-
+df_envoi['sav']=''
 
 ###################################################################################################
-##### Determiner le fichier excel catalogue 
+##### Determiner le fichier excel catalogue et sav
 
 
 input("\nAppuyer sur Entree pour choisir le Fichier catalogue\n")
 
 Tk().withdraw() 
 contenu_catalogue = askopenfilename()
+
+
+r = int(input('1. Uploader en meme temps le fichier SAV\n2. Uploader uniquement le fichier catalogue\n'))
+
+if r == 1:
+
+    input("\nAppuyer sur Entree pour choisir le Fichier Sav\n")
+
+    Tk().withdraw() 
+    fichier_sav = askopenfilename()
+
+    SAV = True
+
+elif r == 2:
+
+    SAV = False
+
+else :
+            
+    print('Erreur dans le choix')
+
+
+
 #contenu_catalogue = 'ex_catalogue.xlsx'
 #contenu_catalogue = 'ex_toto.xlsx'
 
+
 #############################################################################
 ##################
+
 
 vgrp = 1
 vdept = 0
@@ -220,25 +284,33 @@ session = device_flow_session(config.CLIENT_ID)
 
 list_error = []
 #list_error_share = []
-dico_nom = dict()
-dico_nom_error = dict()
 
-dico_nom = creation_nom()
+dico_cat = dict()
+dico_sav = dict()
+dico_nom_error= dict()
+#dico_nom_error_sav = dict()
+
+dico_cat = creation_nom(False)
+dico_sav = creation_nom(SAV)
 
 nom_dossier = input('Entrer un nom de dossier pour l´upload (pre-existant ou non)\n')
 
 #print (dico_nom)
 #input ('TTT')
 
-for index, nom in dico_nom.items():
+for index, nom in dico_cat.items():
 
-    #print (nom+ str(contenu_catalogue))
-    #input ('verif')
     fct_copy(nom, contenu_catalogue)
-    fct_upload (nom,False,nom_dossier,index)
+
+    if SAV == True:
+
+        fct_copy(dico_sav[index], fichier_sav)
+
+    fct_upload (nom,dico_sav[index],False,nom_dossier,index,SAV)
 
 for index, nom in dico_nom_error.items():
-    fct_upload (nom,True,nom_dossier,index)
+
+    fct_upload (nom,dico_sav[index],True,nom_dossier,index,SAV)
 
 
 ###########################################################################
@@ -246,8 +318,9 @@ for index, nom in dico_nom_error.items():
 
 #print (list_error)
 
-os.chdir (dossier_python)
-df_envoi.to_excel('Fichier_envoi_s'+str(semaine)+'.xlsx', index = False, header = True)
+os.chdir (dossier_usr)
+df_envoi.to_excel(contenu_envoi, index = False, header = True)
+print ('\nFichier_envoi mise a jour')
 
 if list_error :
 
@@ -255,9 +328,12 @@ if list_error :
     myfile = open('Erreurs_OneDrive_s'+str(semaine)+'.txt', 'w')
 
     print ('\nErreurs au cours de l´upload, fichier erreur enregistre dans le dossier Fichiers_utilisateur\n')
+    
+    print (('Verifier les fichiers cmd ET sav\n'), file = myfile)
     input ('Appuyer sur Entree pour continuer')
 
     for element in list_error :
+
         print (element)
         print (element, file = myfile)
         
