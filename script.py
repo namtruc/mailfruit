@@ -1,10 +1,6 @@
 # TODO
-# tester envoi avec lignes partielles
 # verification si variable presentes dans mail
-# essai avec um mail vide
 # API
-# enregistrer sortie_incomplete dans fichiers_utilisateurs
-# essai avec piece jointes
 
 import smtplib
 import sys
@@ -160,7 +156,7 @@ if len(xl.sheet_names) > 1 :
 reponse = input("\nTaper 1 si le script doit prendre en compte l'ensemble des lignes des destinataires.\nTaper 2 pour indiquer quelles lignes doivent etre prises en compte\n")
 
 if reponse=='2':
-    vligned = int(input("Numero de la ligne de debut de la liste des destinataires "))
+    vligned = (int(input("Numero de la ligne de debut de la liste des destinataires "))-1)
     vlignef = int(input("Numero de la ligne de fin de la liste des destinataires "))
 else:
     vligned = 1
@@ -183,7 +179,7 @@ if r == 2:
 #########################################################################
 # Convertion fichier excel
 
-vnbrligne = ((vlignef+1)-vligned)
+vnbrligne = (vlignef-(vligned))
 
 read_file = pd.read_excel(contenu1,sheet_name=v_sheet,skiprows = vligned, header=None)         
 
@@ -196,7 +192,6 @@ df = pd.DataFrame(pd.read_csv("Test.csv"))
 
 if vlignef != 1 :
     df = df[:vnbrligne]
-
 
 os.remove("Test.csv")
 
@@ -240,6 +235,7 @@ while True:
 
 def fct_envoi(essai,Range):
 
+    os.chdir(dossier_python)
     global n
     global m
 
@@ -355,11 +351,11 @@ else :
 
 mail.quit()
 
-print (n-1, "mails envoyes,",m,"erreurs")
+print ("\n"+str(n-1)+" mails envoyes,"+str(m)+" erreurs")
 
 os.chdir(dossier_usr)
 os.rename("sortieincomplete.txt", date+"_envoi.txt" )
 
-print ("fichier "+date+"_envoi.txt cree dans le dossier fichier utilisateur")
+print ("\n"+"fichier "+date+"_envoi.txt cree dans le dossier fichier utilisateur")
 
 fin = input("Envois termines, appuyer sur Entree pour quitter le programme")
