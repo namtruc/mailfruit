@@ -7,8 +7,9 @@
 # determiner num semaine
 # erreur pre-remplissage
 # gitignore + base 64
-# ajout config.py a config.inimport requests 
+# ajout config.py a config.ini
 # si erreur upload ne pas supprimer et copier dans fichier utilisateur
+# affucher progression upload
 
 import pyperclip
 import config

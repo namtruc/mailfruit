@@ -1,7 +1,6 @@
 #TODO
 # reecrire la verif
 # retour au menu principal
-# fichier_utilisateurs a creer un rang au dessus
 # fct reconstruction index
 
 import pandas as pd
