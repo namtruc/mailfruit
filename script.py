@@ -10,7 +10,7 @@ import datetime
 import pandas as pd
 import random
 import time
-import getpass
+#import getpass
 
 from tkinter import Tk    
 from tkinter.filedialog import askopenfilename

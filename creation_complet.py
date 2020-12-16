@@ -2,6 +2,7 @@
 # reecrire la verif
 # retour au menu principal
 # fct reconstruction index
+# BUG supression ligne si case prenom vide
 
 import pandas as pd
 import os
@@ -308,4 +309,4 @@ print (nom_fichier+' enregistre dans le dossier\n'+os.path.abspath(os.getcwd()))
 
 input ('\nAppuyer sur Entree pour continuer')
 
-
+import main.py

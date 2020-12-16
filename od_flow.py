@@ -341,7 +341,7 @@ if list_error :
 
 input = ('Appuyer sur Entree pour revenir au menu')
 
-
+import main.py
 
 #os.chdir(dossier_usr)
 #liste = os.listdir()###################
