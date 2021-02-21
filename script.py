@@ -1,7 +1,3 @@
-# TODO
-# verification si variable presentes dans mail
-# API
-
 import smtplib
 import config
 import sys

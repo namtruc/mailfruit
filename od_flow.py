@@ -1,16 +1,3 @@
-### TODO
-# enregistrer les fichiers dans un rep temp
-# Proposer creation dossier et recup ID
-# verifier list-error
-# Creation Dossier archive ?
-# Fct remplissage a revoir
-# determiner num semaine
-# erreur pre-remplissage
-# gitignore + base 64
-# ajout config.py a config.ini
-# si erreur upload ne pas supprimer et copier dans fichier utilisateur
-# affucher progression upload
-
 import pyperclip
 import config
 import json
