@@ -1,3 +1,5 @@
+import sys
+
 print ('\n1. Creer le fichier_envoi a partir de la base de donnee client \n'
         '2. Uploader sur OneDrive le catalogue et le fichier SAV \n'
         '3. Envoyer les mails \n'

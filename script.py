@@ -3,6 +3,7 @@
 # API
 
 import smtplib
+import config
 import sys
 import re
 import os
@@ -32,11 +33,11 @@ os.chdir(dossier_python)
 parser = ConfigParser() 
 parser.read('configuration.ini')
 
-me = parser.get('settings', 'mail_expe')## parametres presents dans le fichier de config
-usr = parser.get('settings', 'username')
+me = config.mail_expe
+usr = config.username
 srv = parser.get('settings', 'srv_smtp')
 prt = parser.get('settings', 'prt_smtp')
-psswd = parser.get('settings', 'psswd')
+psswd = config.psswd
 
 vmail = int(parser.get('fichier_envoi', 'mail'))
 vdept = int(parser.get('fichier_envoi', 'dept'))
@@ -266,13 +267,13 @@ def fct_envoi(essai,Range):
         msg['Date'] = formatdate(localtime=True)
         
         html = file_out2
-        soup = html2text(file_out2)
+        #soup = html2text(file_out2)
         
         html_part = MIMEText(html, "html")
-        text_part = MIMEText(soup, "plain")
+        #text_part = MIMEText(soup, "plain")
         
         msg.attach(html_part)
-        msg.attach(text_part)
+        #msg.attach(text_part)
     
         if l == 0 :### pieces jointes
             os.chdir(dossier_pj)
@@ -358,4 +359,6 @@ os.rename("sortieincomplete.txt", date+"_envoi.txt" )
 
 print ("\n"+"fichier "+date+"_envoi.txt cree dans le dossier fichier utilisateur")
 
-fin = input("Envois termines, appuyer sur Entree pour quitter le programme")
+fin = input("Envois termines, appuyer sur revenir au menu")
+os.chdir(dossier_python)
+import main.py

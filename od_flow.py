@@ -17,6 +17,7 @@ import json
 import time
 import os
 import webbrowser
+import time
 import pandas as pd
 import requests
 
@@ -81,7 +82,7 @@ def creation_nom(sav):
 
         if sav == False :
 
-            dico[x] = ('cmd_'+str(df_envoi.iat[x,vdept])+'_'+str(df_envoi.iat[x,vgrp])+'_S'+semaine+'.xlsx')	
+            dico[x] = ('cmd'+'_S'+semaine+'_'+str(df_envoi.iat[x,vdept])+'_'+str(df_envoi.iat[x,vgrp])+'.xlsx')	
 
         if sav == True :
 
@@ -97,6 +98,7 @@ def remplissage (index, lien,sav_lien):
     if sav_lien == True :
 
         df_envoi.at[index, 'sav'] = lien
+        df_envoi.to_excel(contenu_envoi, index = False, header = True)
 
     else :
 
@@ -119,7 +121,13 @@ def fct_upload (name_cat,name_sav, repeat, nom_dossier,index,SAV):
     print (name_cat)
     headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
     data = open(name_cat, 'rb')
-    r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name_cat+':/content', data=(data), headers=headers)
+    while True :
+        try :
+            r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name_cat+':/content', data=(data), headers=headers)
+            break
+        except :
+            print ("erreur, nouvel essai")
+            time.sleep (1)
 
     fct_retour (r, 'Upload', False, repeat,name_cat,name_sav,False)
 
@@ -340,54 +348,6 @@ if list_error :
         
 
 input = ('Appuyer sur Entree pour revenir au menu')
-
+os.chdir(dossier_python)
 import main.py
-
-#os.chdir(dossier_usr)
-#liste = os.listdir()###################
-#list_error = ()
-#
-#df = pd.DataFrame(columns = ['dpt','grp','lien'])
-#
-#nom_dossier = 's00'##################
-#
-##liste = fct_creation_liste_nom(fichier_complet)
-#for name in liste:
-#    fct_upload (name,True,nom_dossier)
-
-################## ajout fct verif
-
-
-
-
-#os.chdir (dossier_python)
-#df.to_excel('Fichier_envoi.xlsx', index =False)
-
-
-
-
-#r = session.post('https://graph.microsoft.com/v1.0/me/drive/root/children', json = {"name": "New Folder", "folder": { }, "@microsoft.graph.conflictBehavior": "rename"})
-#
-#json_object = json.loads(r.text) 
-#print(json.dumps(json_object, indent = 1))
-#input()
-
-#r = session.get('https://graph.microsoft.com/v1.0/me/drive/root:/Test:/children')
-#d = r.json()
-
-#print (r.json(id))
-#d = r.json()
-#for key, value in r.json().items():
-#    print (key)
-#    print (value)
-
-#items = r['values']
-#print (r)
-#json_object = json.loads(r.string) 
-#print (json_object)
-#print(json.dumps(json_object, indent = 1))
-
-#input ()
-
-
 

@@ -14,3 +14,4 @@ xlrd1.2.0
 
 numpy/openpyxl specifier version ????
 tkinter ?
+Xclip ?

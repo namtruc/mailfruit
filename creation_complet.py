@@ -162,15 +162,13 @@ while 1:
 # Convertion fichier excel
 ##
 
-read_file = pd.read_excel(contenu1,sheet_name=v_sheet)
+read_file = pd.read_excel(contenu1,sheet_name=v_sheet,usecols='A:H')
 
 read_file.to_csv ("Test1.csv",  
                   index = None, 
                   header = ['Dept', 'Grp', 'Resp','','Nom', 'Prenom','Mail',''])
 
-
 df = pd.read_csv("Test1.csv", usecols=[vdept,vgrp,vresp,vnomf,vpnom,vmail]) 
-
 
 ########################################################################################################### Nettoyage et verif
 
@@ -250,50 +248,25 @@ def fct3 (mot,var):
 
         print ("Erreur case vide colonne ---"+mot+"--- groupe "+str(df.at[x,'Grp'])+" departement "+str(df.at[x,'Dept']) )
 
-        rep = input('Taper 1 pour rentrer manuellement un '+mot+'\nTaper 2 pour ne pas incorporer cette ligne\n')
+        rep = input('Taper entree pour rentrer manuellement un '+mot+'\n')
 
-        if int(rep) == 1 :
-
-            nve = input('\nEntrer le '+mot+'\n')
-            df.at[x,var] = nve
-
-        if int(rep) == 2 :
-
-            df2 = df2.drop([x])
+        nve = input('\nEntrer le '+mot+'\n')
+        df.at[x,var] = nve
 
 
-df2 = df
+
 
 for x in range (len(df.index)):
-
-    df = df2
 
     fct3('prenom', 'Prenom')
 
-    list2 = [] ### reconstruction de l'index
     
-    for x in range (len(df.index)):
-
-        list2.append(x)
-    
-    df.index = list2
-
 for x in range (len(df.index)):
-
-    df = df2
 
     fct3('groupe', 'Grp')
 
-    list2 = [] ### reconstruction de l'index
+
     
-    for x in range (len(df.index)):
-
-        list2.append(x)
-    
-    df.index = list2
-
-df = df2
-
 
 ###############################################################################################
 ### Enregistrement et rename
