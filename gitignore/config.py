@@ -6,3 +6,7 @@ CLIENT_ID = ''
 AUTHORITY_URL = 'https://login.microsoftonline.com/common'
 RESOURCE = 'https://graph.microsoft.com'
 API_VERSION = 'beta'
+
+username = ''
+mail_expe = ''
+psswd = ''
