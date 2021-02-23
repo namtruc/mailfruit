@@ -7,6 +7,7 @@ import webbrowser
 import time
 import pandas as pd
 import requests
+import tempfile
 
 from microsoftgraph.client import Client
 from adal import AuthenticationContext
@@ -18,7 +19,8 @@ from shutil import copyfile
 
 dossier_python = os_path.abspath(os_path.split(__file__)[0])
 dossier_usr = dossier_python + '/fichiers_utilisateur'
-
+temp = tempfile.TemporaryDirectory() 
+#print (temp.name)
 ####################dossier_usr = dossier_python + '/s49'
 
 #AUTHORITY_URL = 'https://login.microsoftonline.com/common'
@@ -95,7 +97,8 @@ def remplissage (index, lien,sav_lien):
 
 def fct_copy(dst,src):
 
-    copyfile(src, dst)
+    path = os.path.join(temp.name + dst)
+    copyfile(src, path)
 
 
 #################
@@ -107,28 +110,47 @@ def fct_upload (name_cat,name_sav, repeat, nom_dossier,index,SAV):
     print ("\n")
     print (name_cat)
     headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
-    data = open(name_cat, 'rb')
+
+    path = os.path.join(temp.name + name_cat)
+    data = open(path, 'rb')
+
     while True :
+
         try :
+
             r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/'+name_cat+':/content', data=(data), headers=headers)
             break
+
         except :
+
             print ("erreur, nouvel essai")
             time.sleep (1)
 
     fct_retour (r, 'Upload', False, repeat,name_cat,name_sav,False)
+    #os.remove (name_cat)
 
 
     if SAV == True: 
         
         print (name_sav)
-        #headers = {'Content-Type' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
-        data = open(name_sav, 'rb')
+        path_sav = os.path.join(temp.name + name_sav)
+        data = open(path_sav, 'rb')
 
-        r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/SAV/'+name_sav+':/content', data=(data), headers=headers)
+        while True :
+
+            try :
+
+                r = session.put('https://graph.microsoft.com/v1.0/me/drive/root:/'+nom_dossier+'/SAV/'+name_sav+':/content', data=(data), headers=headers)
+                break
+
+            except :
+
+                print ("erreur, nouvel essai")
+                time.sleep(1)
+
         
         fct_retour (r, 'Upload', False, repeat,name_cat,name_sav,True)
-
+        #os.remove (name_sav)
 
 ###
 
@@ -180,7 +202,7 @@ def fct_retour(r, text, share, repeat,name_cat,name_sav,sav_lien):
 
                     print (text +' ok')
                     fct_share(name_cat, name_sav, repeat,nom_dossier,index,sav_lien)
-                    os.remove (name)
+                    #os.remove (name)
     
                     break
     
@@ -308,6 +330,7 @@ for index, nom in dico_nom_error.items():
 
     fct_upload (nom,dico_sav[index],True,nom_dossier,index,SAV)
 
+temp.cleanup()
 
 ###########################################################################
 ############ Enregistrement
