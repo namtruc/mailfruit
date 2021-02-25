@@ -274,7 +274,7 @@ df.to_excel(nom_fichier, index =False, columns=['Dept', 'Grp', 'Nom', 'Prenom','
 print ('\n')
 print (nom_fichier+' enregistre dans le dossier\n'+os.path.abspath(os.getcwd())) 
 
-input ('\nAppuyer sur Entree pour continuer')
+input ('\nAppuyer sur Entree pour quitter')
 
 os.chdir(dossier_python)
 import main.py

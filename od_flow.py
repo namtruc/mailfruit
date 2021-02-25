@@ -357,7 +357,7 @@ if list_error :
         print (element, file = myfile)
         
 
-input = ('Appuyer sur Entree pour revenir au menu')
+input ('Appuyer sur Entree pour quitter')
 os.chdir(dossier_python)
 import main.py
 
