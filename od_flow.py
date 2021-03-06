@@ -311,7 +311,7 @@ dico_nom_error= dict()
 dico_cat = creation_nom(False)
 dico_sav = creation_nom(SAV)
 
-nom_dossier = input('Entrer un nom de dossier pour l´upload (pre-existant ou non)\n')
+nom_dossier = input('\nEntrer un nom de dossier pour l´upload (pre-existant ou non)\n')
 
 #print (dico_nom)
 #input ('TTT')
@@ -357,7 +357,7 @@ if list_error :
         print (element, file = myfile)
         
 
-input ('Appuyer sur Entree pour quitter')
 os.chdir(dossier_python)
+input ('Appuyer sur Entree pour quitter')
 import main.py
 
